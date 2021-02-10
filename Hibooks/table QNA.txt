@@ -13,7 +13,8 @@ CREATE TABLE QNA
     QB_COUNT      NUMBER, 
     QB_REF        NUMBER, 
     QB_LEV        NUMBER, 
-    QB_SUN        NUMBER, 
+    QB_SUN        NUMBER,
+    QB_CAT        VARCHAR2(10 char),
     CONSTRAINT QNA_PK PRIMARY KEY (QB_SEQ)
 );
 
