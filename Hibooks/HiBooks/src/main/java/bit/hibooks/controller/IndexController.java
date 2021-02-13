@@ -10,9 +10,5 @@ public class IndexController {
 	public String index() {
 		return "index";
 	}
-	@RequestMapping("list.do")
-	public String list() {
-		return "list";
-	}
 
 }

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,16 +140,18 @@ body {
   <main id="main">
     <div style="min-height:100vh;">
 <script>
-
-	$(document).on('click', '#btnSave', function(e){
-		e.preventDefault();
-		$("#form").submit();
-	});
-
-	$(document).on('click', '#btnList', function(e){
-		e.preventDefault();
-		location.href="list.do";
-	});
+	function check()
+	{
+	    for(var i=0; i<document.input.elements.length; i++)
+		   {
+		      if(document.input.elements[i].value == "")
+			  {
+			     alert("모든 값을 입력 하셔야 합니다. ");
+				 return false;
+			  }
+		   }
+		   document.input.submit();
+	}
 </script>
 
 	<article>
@@ -157,33 +159,49 @@ body {
 		<div class="container" role="main">
 
 			<h2></h2>
-
-			<form name="form" id="form" role="form" method="post" action="write.do">
+			<form name="input" method="post" action="write.do" enctype="multipart/form-data">
+				<select name="qb_cat">
+				    <option value="none">=== 선택 ===</option>
+				    <option value="0">상품 문의</option>
+				    <option value="1">배송 문의</option>
+				    <option value="2">결제 문의</option>
+				    <option value="3">기타</option>
+			  	</select>
 				<div class="mb-3">
 					<label for="title">제목</label>
-					<input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
+					<input type="text" class="form-control" name="qb_subject" placeholder="제목을 입력해 주세요">
 				</div>
 				<div class="mb-3">
 					<label for="reg_id">작성자</label>
-					<input type="text" class="form-control" name="reg_id" id="reg_id" placeholder="이름을 입력해 주세요">
+					<input type="text" class="form-control" name="m_email" placeholder="이름을 입력해 주세요">
 				</div>
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content" placeholder="내용을 입력해 주세요" ></textarea>
+					<textarea class="form-control" rows="5" name="qb_content" placeholder="내용을 입력해 주세요" ></textarea>
+				</div>
+				<!-- <div class="mb-3">
+					<label for="file">file</label>
+					<input type="file" name="files">
 				</div>
 				<div class="mb-3">
-					<label for="file">file</label>
-					<input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
-					<input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
-					<input type="text" class="form-control" name="tag" id="tag" placeholder="태그를 입력해 주세요">
-				</div>
-			</form>
-			<div >
-				<button type="button" class="btn btn-sm btn-primary" id="btnSave">등록</button>
-				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+					<input type="file" name="files">
+				</div>-->
+			<div>
+				<button type="button" value="전송" class="btn btn-sm btn-primary" onclick="check()">등록</button>
+				<button type="button" value="목록" class="btn btn-sm btn-primary" href="list.do">목록</button>
+				
 			</div>
-		</div>
+			</form>
+			</div>
 	</article>
+	<script language="javascript">
+       function f(select){
+           //var el = document.getElementById("psId");
+           var cat = select.value;
+           //alert("ps : " + ps);
+           location.href="list.do?ps="+ps;
+       }
+    </script>
 	
   </main><!-- End #main -->
 

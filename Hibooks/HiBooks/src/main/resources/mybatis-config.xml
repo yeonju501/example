@@ -4,9 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
    <typeAliases>
-   	 <!--  <typeAlias alias="Boardq" type="bit.hibooks.domain.Boardq"/> -->
+   	 <typeAlias alias="Boardq" type="bit.hibooks.domain.Boardq"/>
+   	 <typeAlias alias="BoardqVo" type="bit.hibooks.domain.BoardqVo"/>
+   	 <typeAlias alias="Qfile" type="bit.hibooks.domain.Qfile"/>
    </typeAliases>
    <mappers>
-   	  <!--  <mapper resource="bit/hibooks/mapper/BoardqMapper.xml"/>  -->
+   	  <mapper resource="bit/hibooks/mapper/BoardqMapper.xml"/>
+   	  <mapper resource="bit/hibooks/mapper/QfileMapper.xml"/>
    </mappers>
 </configuration>

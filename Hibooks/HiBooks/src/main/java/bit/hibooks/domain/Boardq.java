@@ -19,5 +19,6 @@ public class Boardq {
 	public int qb_ref;
 	public int qb_lev;
 	public int qb_sun;
+	public int qb_cat;
 	
 }
